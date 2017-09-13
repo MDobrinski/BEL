@@ -137,13 +137,13 @@ public class BEL_Char {
         }
   @Override
   public String toString() {
-    return "BEL_Char{" + "\nBackground= " + bg_type 
+    return "Background= " + bg_type 
             + ", \nStrength= " + strength 
             + ", \nEndurance= " + endurance 
             + ", \nWeapons Handling= " + wep_handling 
             + ", \nAgility= " + agility 
             + ", \nStamina= " + stamina 
-            + ", \nWeight= " + weight + '}';
+            + ", \nWeight= " + weight;
   }
   
   

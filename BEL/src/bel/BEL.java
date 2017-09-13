@@ -15,6 +15,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -98,7 +100,16 @@ public class BEL extends Application {
       leftGrid.add(tfWT, 1, 5);
       
      
-    root.setLeft(leftGrid);  
+    root.setLeft(leftGrid);
+    
+    TextArea taResults = new TextArea();
+    taResults.setEditable(false);
+    taResults.setPrefSize(240, 800);
+    ScrollPane centerSP = new ScrollPane(taResults);
+    root.setCenter(centerSP);
+    
+    
+    
       
     Scene scene = new Scene(root, 300, 250);
     
@@ -114,9 +125,9 @@ public class BEL extends Application {
       int i = 0;
       for (i=0; i<count; i++){ 
       BEL_Char solder = new BEL_Char();
-      System.out.println("************* " + i + " ************************");
-      System.out.println(solder.toString());
-      System.out.println("****************************************");
+      taResults.appendText("************* " + i + " ************************\n");
+      taResults.appendText(solder.toString()+ "\n");
+      taResults.appendText("****************************************\n");
       }
     });
     

@@ -17,6 +17,7 @@ public class BEL_Char {
   private int agility;
   private int stamina;
   private int weight;
+  private double avgStat;
 
   public BEL_Char() {
   setBg_type();
@@ -26,27 +27,33 @@ public class BEL_Char {
   setWep_handling();
   setStamina();
   setWeight();
-  
-  
+  setAvgStat();  
   }
 
-  public void setBg_type() {
+  private void setAvgStat(){
+    int sum = this.agility + this.endurance + this.stamina + this.strength +
+            this.wep_handling;
+    this.avgStat = Math.floor((((double)sum/5)*10.0+0.5))/10.0;
+  }
+  
+  
+  private void setBg_type() {
     this.bg_type = (DiceRoll(1, 6)<4) ? "City": "Rural";
   }
 
-  public void setStrength() {
+  private void setStrength() {
     this.strength = DiceRoll (1, 6)+4;
   }
 
-  public void setEndurance() {
+  private void setEndurance() {
     this.endurance = DiceRoll (1, 6)+4;
   }
 
-  public void setWep_handling() {
+  private void setWep_handling() {
     this.wep_handling = DiceRoll (1, 6)+4;
   }
 
-  public void setAgility() {
+  private void setAgility() {
     this.agility = DiceRoll (1, 6)+4;
   }
 
@@ -54,11 +61,11 @@ public class BEL_Char {
     this.stamina = stamina;
   }
   
-  public void setStamina() {
+  private void setStamina() {
     this.stamina = (int)ceil((this.strength + this.endurance)/2);
   }
 
-  public void setWeight() {
+  public final void setWeight() {
     this.weight = weightCalc(this.strength, this.agility);
   }
 
@@ -88,6 +95,10 @@ public class BEL_Char {
 
   public int getWeight() {
     return weight;
+  }
+  
+  public double getAvgStat(){
+      return avgStat;
   }
 
  private static int weightCalc(int strength, int agility) {
@@ -143,7 +154,8 @@ public class BEL_Char {
             + ", \nWeapons Handling= " + wep_handling 
             + ", \nAgility= " + agility 
             + ", \nStamina= " + stamina 
-            + ", \nWeight= " + weight;
+            + ", \nWeight= " + weight
+            + ", \nAverage Stat= " + avgStat;
   }
   
   

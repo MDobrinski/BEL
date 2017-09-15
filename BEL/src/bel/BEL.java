@@ -33,10 +33,10 @@ public class BEL extends Application {
   
   @Override
   public void start(Stage primaryStage) {
-    Button btn = new Button();
-    btn.setText("Generate Solder/s");
+    Button gsBtn = new Button();
+    gsBtn.setText("Generate Solder/s");
     
-    
+    GSHandlerClass gsBtnHandler = new GSHandlerClass();
     
     BorderPane root = new BorderPane();
     
@@ -45,8 +45,8 @@ public class BEL extends Application {
       topHBox.setSpacing(10);   // Gap between nodes
       topHBox.setStyle("-fx-background-color: #6b8e23;");
     
-      TextField textF1 = new TextField("1");
-      topHBox.getChildren().addAll(btn, textF1);
+      final TextField textF1 = new TextField("1");
+      topHBox.getChildren().addAll(gsBtn, textF1);
     root.setTop(topHBox);
     
     GridPane leftGrid = new GridPane();
@@ -72,7 +72,9 @@ public class BEL extends Application {
       Label labWT = new Label("Weight: ");
       GridPane.setHalignment(labWT, HPos.RIGHT);
       leftGrid.add(labWT, 0, 5);
-      
+      Label labAS = new Label("Average Stat: ");
+      GridPane.setHalignment(labAS, HPos.RIGHT);
+      leftGrid.add(labAS, 0, 6);
       // Setup the text boxes for the stats
       TextField tfST = new TextField("00");
       tfST.setPrefWidth(35);
@@ -98,7 +100,10 @@ public class BEL extends Application {
       tfWT.setPrefWidth(35);
       tfWT.setEditable(false);
       leftGrid.add(tfWT, 1, 5);
-      
+      TextField tfAS = new TextField("00");
+      tfAS.setPrefWidth(35);
+      tfAS.setEditable(false);
+      leftGrid.add(tfAS, 1, 6);
      
     root.setLeft(leftGrid);
     
@@ -108,31 +113,14 @@ public class BEL extends Application {
     ScrollPane centerSP = new ScrollPane(taResults);
     root.setCenter(centerSP);
     
-    
-    
-      
     Scene scene = new Scene(root, 300, 250);
     
     primaryStage.setTitle("Character Generator");
     primaryStage.setScene(scene);
     primaryStage.show();
-    
-    
-      
-    btn.setOnAction((ActionEvent event) -> {
-      String text = textF1.getText();
-      int count = Integer.parseInt(text);
-      int i = 0;
-      for (i=0; i<count; i++){ 
-      BEL_Char solder = new BEL_Char();
-      taResults.appendText("************* " + i + " ************************\n");
-      taResults.appendText(solder.toString()+ "\n");
-      taResults.appendText("****************************************\n");
-      }
-    });
-    
-    
-    
+          
+    gsBtn.setOnAction(gsBtnHandler);
+  
   }
 
 
@@ -143,4 +131,19 @@ public class BEL extends Application {
     launch(args);
   }
   
-}
+}//++++++++++++++++++++++++ END BEL class ++++++++++++++++++++++++++++++++++++
+
+class GSHandlerClass implements EventHandler<ActionEvent> {
+    @Override
+    public void handle(ActionEvent e){
+      String text = textF1.getText();
+      int count = Integer.parseInt(text);
+      int i = 0;
+      for (i=0; i<count; i++){ 
+      BEL_Char solder = new BEL_Char();
+      taResults.appendText("************* " + i + " ************************\n");
+      taResults.appendText(solder.toString()+ "\n");
+      taResults.appendText("****************************************\n");
+      }  
+    }
+}//+++++++++++++++++++++++++ END GSHandlerClass +++++++++++++++++++++++++++++++

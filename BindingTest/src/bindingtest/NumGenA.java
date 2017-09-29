@@ -11,8 +11,33 @@ package bindingtest;
  * @author michael.sbg
  */
 public class NumGenA {
-  public int numberA;
-  public int numberB;
+  private static int count;
+  private int value;
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^ Constructors ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    public NumGenA() {
+        count ++;
+        this.value = diceRoll();
+    }
+    // SSSSSSSSSSSSSSSSSSSSSSSSS Setters SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+    
   
   
-}
+  
+    // GGGGGGGGGGGGGGGGGGGGGGGGG Getters GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 
+    public static int getCount (){
+        return count;
+    }
+    
+    public int getValue (){
+        return this.value;
+    }
+    
+    
+  
+  
+  // MMMMMMMMMMMMMMMMMMMM Methods MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    public static int diceRoll(){
+        return ((6-1+1) * (int)(Math.random()*1000)) / 1000 + 1;
+    }
+  
+} // *********************** END NumGenA Class ******************************

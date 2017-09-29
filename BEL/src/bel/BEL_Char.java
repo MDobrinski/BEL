@@ -70,35 +70,35 @@ public class BEL_Char {
   }
 
   public String getBg_type() {
-    return bg_type;
+    return this.bg_type;
   }
 
   public int getStrength() {
-    return strength;
+    return this.strength;
   }
 
   public int getEndurance() {
-    return endurance;
+    return this.endurance;
   }
 
   public int getWep_handling() {
-    return wep_handling;
+    return this.wep_handling;
   }
 
   public int getAgility() {
-    return agility;
+    return this.agility;
   }
 
   public int getStamina() {
-    return stamina;
+    return this.stamina;
   }
 
   public int getWeight() {
-    return weight;
+    return this.weight;
   }
   
   public double getAvgStat(){
-      return avgStat;
+      return this.avgStat;
   }
 
  private static int weightCalc(int strength, int agility) {

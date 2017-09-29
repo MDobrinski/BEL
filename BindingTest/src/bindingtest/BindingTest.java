@@ -42,11 +42,7 @@ public class BindingTest extends Application {
         
         Button btn2 = new Button();
         btn2.setText("Get Num.");
-        
-        
-        
-        
-        
+ 
         // ********************* Handle Events ****************
         btn1.setOnAction(e -> btn1Event());
         btn2.setOnAction(e -> btn2Event());
@@ -109,10 +105,7 @@ public class BindingTest extends Application {
         
     }// END of btn2Event
     
-    
-    
-    
-    
+ 
     // ================= Methods Go Above Here ======================
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package bel;
 
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,14 +31,15 @@ import javafx.stage.Stage;
  */
 public class BEL extends Application {
 
+  public static TextField textF1 = new TextField("1");
+  public static TextArea taResults = new TextArea();
+  ArrayList<BEL_Char> solderList = new ArrayList<BEL_Char>();
   
   @Override
   public void start(Stage primaryStage) {
     Button gsBtn = new Button();
     gsBtn.setText("Generate Solder/s");
-    
-    GSHandlerClass gsBtnHandler = new GSHandlerClass();
-    
+         
     BorderPane root = new BorderPane();
     
     HBox topHBox = new HBox(10);
@@ -45,7 +47,7 @@ public class BEL extends Application {
       topHBox.setSpacing(10);   // Gap between nodes
       topHBox.setStyle("-fx-background-color: #6b8e23;");
     
-      final TextField textF1 = new TextField("1");
+      
       topHBox.getChildren().addAll(gsBtn, textF1);
     root.setTop(topHBox);
     
@@ -107,7 +109,7 @@ public class BEL extends Application {
      
     root.setLeft(leftGrid);
     
-    TextArea taResults = new TextArea();
+    
     taResults.setEditable(false);
     taResults.setPrefSize(240, 800);
     ScrollPane centerSP = new ScrollPane(taResults);
@@ -119,9 +121,21 @@ public class BEL extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
           
-    gsBtn.setOnAction(gsBtnHandler);
+    gsBtn.setOnAction( e -> btn1Event());
   
-  }
+  }// ******************* END of PrimaryStage ***********
+  
+  public void btn1Event(){
+      String text = textF1.getText();
+      int count = Integer.parseInt(text);
+      int i = 0;
+      for (i=0; i<count; i++){ 
+      BEL_Char solder = new BEL_Char();
+      taResults.appendText("************* " + i + " ************************\n");
+      taResults.appendText(solder.toString()+ "\n");
+      taResults.appendText("****************************************\n");
+      }  
+    }
 
 
   /**
@@ -133,17 +147,3 @@ public class BEL extends Application {
   
 }//++++++++++++++++++++++++ END BEL class ++++++++++++++++++++++++++++++++++++
 
-class GSHandlerClass implements EventHandler<ActionEvent> {
-    @Override
-    public void handle(ActionEvent e){
-      String text = textF1.getText();
-      int count = Integer.parseInt(text);
-      int i = 0;
-      for (i=0; i<count; i++){ 
-      BEL_Char solder = new BEL_Char();
-      taResults.appendText("************* " + i + " ************************\n");
-      taResults.appendText(solder.toString()+ "\n");
-      taResults.appendText("****************************************\n");
-      }  
-    }
-}//+++++++++++++++++++++++++ END GSHandlerClass +++++++++++++++++++++++++++++++

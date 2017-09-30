@@ -1,7 +1,10 @@
 /BindingTest/nbproject/private/
 /BindingTest/dist/
 /BindingTest/build/
-*.*
-*
+/BEL/nbproject/private/
+/BEL/dist/
+/BEL/build/
+/BEL/*.*
+/BEL/*
 
-!*.java
+!/BEL/src/*.java

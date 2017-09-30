@@ -155,7 +155,7 @@ public class BEL extends Application {
       int i = 0;
       
       try{
-        PrintWriter out = new PrintWriter("C:\\solderlist.txt");
+        PrintWriter out = new PrintWriter("C:\\Michael\\BEL_Data\\SolderList.txt");
         
       for (i=0; i<count; i++){ 
       solderList.add(new BEL_Char());

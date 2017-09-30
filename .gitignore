@@ -1,3 +1,7 @@
 /BindingTest/nbproject/private/
 /BindingTest/dist/
 /BindingTest/build/
+*.*
+*
+
+!*.java

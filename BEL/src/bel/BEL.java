@@ -6,7 +6,11 @@
 package bel;
 
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,7 +47,6 @@ public class BEL extends Application {
   TextField tfAS = new TextField("00");
   TextField tfSN = new TextField("0");
   TextField tfBG = new TextField("-");
-  
   
   @Override
   public void start(Stage primaryStage) {
@@ -134,22 +137,41 @@ public class BEL extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
           
-    gsBtn.setOnAction( e -> btn1Event());
+    gsBtn.setOnAction( e -> {
+      try {
+        btn1Event();
+      } catch (FileNotFoundException ex) {
+        Logger.getLogger(BEL.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    });
     btnGetSolder.setOnAction(e -> btnGSEvent());
     
   
   }// ******************* END of PrimaryStage ***********
   
-  public void btn1Event(){
+  public void btn1Event() throws FileNotFoundException{
       String text = textF1.getText();
       int count = Integer.parseInt(text);
       int i = 0;
+      
+      try{
+        PrintWriter out = new PrintWriter("C:\\solderlist.txt");
+        
       for (i=0; i<count; i++){ 
       solderList.add(new BEL_Char());
       taResults.appendText("************* " + i + " ************************\n");
       taResults.appendText(solderList.get(i).toString()+ "\n");
       taResults.appendText("****************************************\n");
-      }  
+      
+      out.print("************* " + i + " ************************\r\n");
+      out.print(solderList.get(i).toString()+ "\r\n");
+      out.print("****************************************\r\n");
+      out.print("\r\n");
+      }
+      out.close();
+      } catch (Exception FileNotFoundException){
+        System.out.println("PrintWriter Exception");}
+      
     }// END btn1Event()
   
   public void btnGSEvent(){

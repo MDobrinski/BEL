@@ -18,11 +18,12 @@ public class BEL_Char {
   private int stamina;
   private int weight;
   private double avgStat;
+  private int serialNumber;
 
   public BEL_Char() {
   setBg_type();
   setStrength();
-  setEndurance()   ;
+  setEndurance();
   setAgility();
   setWep_handling();
   setStamina();
@@ -149,13 +150,13 @@ public class BEL_Char {
   @Override
   public String toString() {
     return "Background= " + bg_type 
-            + ", \nStrength= " + strength 
-            + ", \nEndurance= " + endurance 
-            + ", \nWeapons Handling= " + wep_handling 
-            + ", \nAgility= " + agility 
-            + ", \nStamina= " + stamina 
-            + ", \nWeight= " + weight
-            + ", \nAverage Stat= " + avgStat;
+            + ", \r\nStrength= " + strength 
+            + ", \r\nEndurance= " + endurance 
+            + ", \r\nWeapons Handling= " + wep_handling 
+            + ", \r\nAgility= " + agility 
+            + ", \r\nStamina= " + stamina 
+            + ", \r\nWeight= " + weight
+            + ", \r\nAverage Stat= " + avgStat;
   }
   
   

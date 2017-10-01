@@ -48,7 +48,7 @@ public class BEL extends Application {
   TextField tfSN = new TextField("0");
   TextField tfBG = new TextField("-");
   TextField tfDSN = new TextField("0");
- 
+  Label labCount = new Label();
   
   @Override
   public void start(Stage primaryStage) {
@@ -59,8 +59,7 @@ public class BEL extends Application {
     Label spc1 = new Label("  ");
     tfDSN.setPrefColumnCount(3);
     textF1.setPrefColumnCount(4);
-     Label labCount = new Label();
-     labCount.setText("  "+String.valueOf(BEL_Char.getNumSolders()));
+    labCount.setText("  "+String.valueOf(BEL_Char.getNumSolders()));
     
     BorderPane root = new BorderPane();
     
@@ -180,6 +179,8 @@ public class BEL extends Application {
       out.print(solderList.get(i+j).toString()+ "\r\n");
       out.print("****************************************\r\n");
       out.print("\r\n");
+      
+      labCount.setText("  "+String.valueOf(BEL_Char.getNumSolders()));
       }
       out.close();
       } catch (Exception FileNotFoundException){

@@ -32,6 +32,7 @@ public class BEL_Char {
   setAvgStat();
   numSolders++;
   System.out.println(numSolders);
+  setSerialNumber(index);
   }
 
   private void setSerialNumber(int index){

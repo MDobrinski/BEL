@@ -19,8 +19,9 @@ public class BEL_Char {
   private int weight;
   private double avgStat;
   private int serialNumber;
+  private static int numSolders;
 
-  public BEL_Char() {
+  public BEL_Char(int index) {
   setBg_type();
   setStrength();
   setEndurance();
@@ -28,9 +29,16 @@ public class BEL_Char {
   setWep_handling();
   setStamina();
   setWeight();
-  setAvgStat();  
+  setAvgStat();
+  numSolders++;
+  System.out.println(numSolders);
   }
 
+  private void setSerialNumber(int index){
+      this.serialNumber = index;
+  }
+  
+  
   private void setAvgStat(){
     int sum = this.agility + this.endurance + this.stamina + this.strength +
             this.wep_handling;
@@ -70,6 +78,17 @@ public class BEL_Char {
     this.weight = weightCalc(this.strength, this.agility);
   }
 
+  // *************** Getters *******************************
+  
+  public static int getNumSolders(){
+      System.out.println(" ---- " + numSolders);
+      return numSolders;
+  }
+  
+  public int getSerialNumber(){
+      return this.serialNumber;
+  }
+  
   public String getBg_type() {
     return this.bg_type;
   }

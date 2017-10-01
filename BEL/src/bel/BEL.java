@@ -47,6 +47,8 @@ public class BEL extends Application {
   TextField tfAS = new TextField("00");
   TextField tfSN = new TextField("0");
   TextField tfBG = new TextField("-");
+  TextField tfDSN = new TextField("0");
+ 
   
   @Override
   public void start(Stage primaryStage) {
@@ -55,8 +57,10 @@ public class BEL extends Application {
     Button btnGetSolder = new Button();
     btnGetSolder.setText("Get Solder");
     Label spc1 = new Label("  ");
-    tfSN.setPrefColumnCount(3);
+    tfDSN.setPrefColumnCount(3);
     textF1.setPrefColumnCount(4);
+     Label labCount = new Label();
+     labCount.setText("  "+String.valueOf(BEL_Char.getNumSolders()));
     
     BorderPane root = new BorderPane();
     
@@ -64,7 +68,8 @@ public class BEL extends Application {
       topHBox.setPadding(new Insets(15, 12, 15, 12));
       topHBox.setSpacing(10);   // Gap between nodes
       topHBox.setStyle("-fx-background-color: #6b8e23;");
-      topHBox.getChildren().addAll(gsBtn, textF1, spc1, btnGetSolder, tfSN);
+      topHBox.getChildren().addAll(gsBtn, textF1, spc1, btnGetSolder, tfDSN,
+              labCount);
     root.setTop(topHBox);
     
     GridPane leftGrid = new GridPane();
@@ -72,57 +77,63 @@ public class BEL extends Application {
       leftGrid.setHgap(10);
       leftGrid.setPadding(new Insets (5, 5, 5, 5));
       // Setup the Labels
+      Label labSN = new Label("SerialNum: ");
+      GridPane.setHalignment(labSN, HPos.RIGHT);
+      leftGrid.add(labSN, 0, 0);
       Label labST = new Label("Strength: ");
       GridPane.setHalignment(labST, HPos.RIGHT);
-      leftGrid.add(labST, 0, 0);
+      leftGrid.add(labST, 0, 1);
       Label labEN = new Label("Endurance: ");
       GridPane.setHalignment(labEN, HPos.RIGHT);
-      leftGrid.add(labEN, 0, 1);
+      leftGrid.add(labEN, 0, 2);
       Label labAG = new Label("Agility: ");
       GridPane.setHalignment(labAG, HPos.RIGHT);
-      leftGrid.add(labAG, 0, 2);
+      leftGrid.add(labAG, 0, 3);
       Label labWH = new Label("Weapons Handling: ");
       GridPane.setHalignment(labWH, HPos.RIGHT);
-      leftGrid.add(labWH, 0, 3);
+      leftGrid.add(labWH, 0, 4);
       Label labSA = new Label("Stamina: ");
       GridPane.setHalignment(labSA, HPos.RIGHT);
-      leftGrid.add(labSA, 0, 4);
+      leftGrid.add(labSA, 0, 5);
       Label labWT = new Label("Weight: ");
       GridPane.setHalignment(labWT, HPos.RIGHT);
-      leftGrid.add(labWT, 0, 5);
+      leftGrid.add(labWT, 0, 6);
       Label labAS = new Label("Average Stat: ");
       GridPane.setHalignment(labAS, HPos.RIGHT);
-      leftGrid.add(labAS, 0, 6);
+      leftGrid.add(labAS, 0, 7);
       Label labBG = new Label("Background: ");
       GridPane.setHalignment(labBG, HPos.RIGHT);
-      leftGrid.add(labBG, 0, 7);
+      leftGrid.add(labBG, 0, 8);
       
       
       // Setup the text boxes for the stats
+      tfSN.setPrefWidth(35);
+      tfSN.setEditable(false);
+      leftGrid.add(tfSN, 1, 0);
       tfST.setPrefWidth(35);
       tfST.setEditable(false);
-      leftGrid.add(tfST, 1, 0);
+      leftGrid.add(tfST, 1, 1);
       tfEN.setPrefWidth(35);
       tfEN.setEditable(false);
-      leftGrid.add(tfEN, 1, 1);
+      leftGrid.add(tfEN, 1, 2);
       tfAG.setPrefWidth(35);
       tfAG.setEditable(false);
-      leftGrid.add(tfAG, 1, 2);
+      leftGrid.add(tfAG, 1, 3);
       tfWH.setPrefWidth(35);
       tfWH.setEditable(false);
-      leftGrid.add(tfWH, 1, 3);
+      leftGrid.add(tfWH, 1, 4);
       tfSA.setPrefWidth(35);
       tfSA.setEditable(false);
-      leftGrid.add(tfSA, 1, 4);
+      leftGrid.add(tfSA, 1, 5);
       tfWT.setPrefWidth(35);
       tfWT.setEditable(false);
-      leftGrid.add(tfWT, 1, 5);
+      leftGrid.add(tfWT, 1, 6);
       tfAS.setPrefWidth(35);
       tfAS.setEditable(false);
-      leftGrid.add(tfAS, 1, 6);
+      leftGrid.add(tfAS, 1, 7);
       tfBG.setPrefWidth(45);
       tfBG.setEditable(false);
-      leftGrid.add(tfBG, 1, 7);
+      leftGrid.add(tfBG, 1, 8);
     root.setLeft(leftGrid);
     
     
@@ -152,19 +163,21 @@ public class BEL extends Application {
   public void btn1Event() throws FileNotFoundException{
       String text = textF1.getText();
       int count = Integer.parseInt(text);
-      int i = 0;
+      int i = BEL_Char.getNumSolders();
       
+      int j = 0;
       try{
         PrintWriter out = new PrintWriter("C:\\Michael\\BEL_Data\\SolderList.txt");
         
-      for (i=0; i<count; i++){ 
-      solderList.add(new BEL_Char());
-      taResults.appendText("************* " + i + " ************************\n");
-      taResults.appendText(solderList.get(i).toString()+ "\n");
+      for (j=0; j<count; j++){ 
+      solderList.add(new BEL_Char(i+j));
+      System.out.println(" iii " + BEL_Char.getNumSolders());
+      taResults.appendText("************* " + (i+j) + " ************************\n");
+      taResults.appendText(solderList.get(i+j).toString()+ "\n");
       taResults.appendText("****************************************\n");
       
-      out.print("************* " + i + " ************************\r\n");
-      out.print(solderList.get(i).toString()+ "\r\n");
+      out.print("************* " + (i+j) + " ************************\r\n");
+      out.print(solderList.get(i+j).toString()+ "\r\n");
       out.print("****************************************\r\n");
       out.print("\r\n");
       }
@@ -175,7 +188,7 @@ public class BEL extends Application {
     }// END btn1Event()
   
   public void btnGSEvent(){
-      String text = tfSN.getText();
+      String text = tfDSN.getText();
       int i = Integer.parseInt(text);
       tfST.setText(String.valueOf(solderList.get(i).getStrength()));
       tfEN.setText(String.valueOf(solderList.get(i).getEndurance()));
@@ -185,7 +198,7 @@ public class BEL extends Application {
       tfWT.setText(String.valueOf(solderList.get(i).getWeight()));
       tfAS.setText(String.valueOf(solderList.get(i).getAvgStat()));
       tfBG.setText(solderList.get(i).getBg_type());
-      
+      tfSN.setText(String.valueOf(solderList.get(i).getSerialNumber()));
         
     }// END btnGSEvent()
   

@@ -20,7 +20,8 @@ public class BG_Skill {
   private int lead;
   private int demo;
   private int orient;
-  private int bgSerialNumber;
+  private int aid;
+  private int bgSkillSN;
   
 
     public BG_Skill(String bgType, int solderSN) {
@@ -31,14 +32,14 @@ public class BG_Skill {
         setDrive(bgType);
         setSwim(bgType);
         setHand(bgType);
-        setLead(bgType);
+        setLead();
         setDemo(bgType);
         setOrient(bgType);
+        setAid();
+        setBGskillSN(solderSN);
         
     }
 
-  
-  
     public int getRifle() {
         return rifle;
     }
@@ -80,7 +81,7 @@ public class BG_Skill {
     }
     
     public int getSerialNumber(){
-        return bgSerialNumber;
+        return bgSkillSN;
     }
 
     private void setRifle(String bgType) {
@@ -190,28 +191,111 @@ public class BG_Skill {
     }// End setDrive
 
     private void setSwim(String bgType) {
-        this.swim = swim;
-    }
+        int roll = D6()+D6();
+        if("City".equals(bgType) && roll>8){
+            roll = D6();
+                if(roll == 1){
+                    this.swim = 1;
+                } else if(roll == 6){
+                    this.swim = 3;
+                } else {
+                    this.swim = 2;
+                }
+        } else if("Rural".equals(bgType) && roll>6){
+            roll = D6();
+                if(roll == 1){
+                    this.swim = 1;
+                } else if(roll == 6){
+                    this.swim = 3;
+                } else {
+                    this.swim = 2;
+                }
+        } else {
+            this.swim = 0;
+        }
+    }// End setSwim
 
     private void setHand(String bgType){
-        this.hand = hand;
-    }
+        int roll = D6()+D6();
+        if("City".equals(bgType) && roll>8){
+            roll = D6();
+                if(roll <= 2){
+                    this.hand = 1;
+                } else if(roll == 6){
+                    this.hand = 3;
+                } else {
+                    this.hand = 2;
+                }
+        } else if("Rural".equals(bgType) && roll>9){
+            roll = D6();
+                if(roll <= 2){
+                    this.hand = 1;
+                } else if(roll == 6){
+                    this.hand = 3;
+                } else {
+                    this.hand = 2;
+                }
+        } else {
+            this.hand = 0;
+        }
+    }// End setHand
 
-    private void setLead(String bgType) {
-        this.lead = lead;
-    }
+    private void setLead() {
+      this.lead = ((D6()+D6())>8)?1:0;
+    }// End setLead
 
     private void setDemo(String bgType) {
+        if("City".equals(bgType)){
+            this.demo = 0;
+        } else if(D6()+D6() == 12){
+            this.demo = 1;
+        }
         this.demo = demo;
-    }
+    }// End setDemo
 
     private void setOrient(String bgType){
-        this.orient = orient;
-    }
+        int roll = D6()+D6();
+        if("City".equals(bgType) && roll==12){
+            roll = D6();
+                if(roll <= 3){
+                    this.orient = 1;
+                } else if(roll == 6){
+                    this.orient = 3;
+                } else {
+                    this.orient = 2;
+                }
+        } else if("Rural".equals(bgType) && roll>=9){
+            roll = D6();
+                if(roll <= 3){
+                    this.orient = 1;
+                } else if(roll == 6){
+                    this.orient= 3;
+                } else {
+                    this.orient = 2;
+                }
+        } else {
+            this.orient = 0;
+        }
+        this.orient = 0;
+    }// End setOrient
     
-    private void setBGserialNumber(int solderSN){
-        this.bgSerialNumber = solderSN;
-    }
+    private void setAid(){
+      if(D6()+D6()>10){
+        int roll = D6();
+        if(roll<4){
+            this.aid = 1;
+        } else if(roll ==6){
+            this.aid = 3;
+        } else{
+            this.aid = 2;
+        }
+      } else
+            this.aid = 0;
+    }// End setAid
+    
+    private void setBGskillSN(int solderSN){
+        this.bgSkillSN = solderSN;
+    }// End setBGskillSN
 
     
     public static int D6(){

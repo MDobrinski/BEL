@@ -1,0 +1,37 @@
+/BindingTest/nbproject/private/
+/BindingTest/dist/
+/BindingTest/build/
+/BEL/nbproject/private/
+/BEL/dist/
+/BEL/build/
+
+
+!src/bel/BEL.java
+!src/bel/BEL_Char.java
+
+!/src/bel/*.java
+!*.java
+
+# This list of files is suggested by Git Hub
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

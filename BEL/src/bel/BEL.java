@@ -38,6 +38,7 @@ public class BEL extends Application {
   public static TextField textF1 = new TextField("1");
   public static TextArea taResults = new TextArea();
   ArrayList<BEL_Char> solderList = new ArrayList<BEL_Char>();
+  ArrayList<BG_Skill> bgSkills = new ArrayList<BG_Skill>();
   TextField tfST = new TextField("00");
   TextField tfEN = new TextField("00");
   TextField tfAG = new TextField("00");
@@ -170,13 +171,15 @@ public class BEL extends Application {
         
       for (j=0; j<count; j++){ 
       solderList.add(new BEL_Char(i+j));
-      System.out.println(" iii " + BEL_Char.getNumSolders());
+      bgSkills.add(new BG_Skill(solderList.get(i+j).getBg_type(), solderList.get(i+j).getSerialNumber()));
       taResults.appendText("************* " + (i+j) + " ************************\n");
       taResults.appendText(solderList.get(i+j).toString()+ "\n");
+      taResults.appendText(bgSkills.get(i+j).toString()+ "\n");
       taResults.appendText("****************************************\n");
       
       out.print("************* " + (i+j) + " ************************\r\n");
       out.print(solderList.get(i+j).toString()+ "\r\n");
+      out.print(bgSkills.get(i+j).toString()+ "\r\n");
       out.print("****************************************\r\n");
       out.print("\r\n");
       

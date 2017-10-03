@@ -10,18 +10,35 @@ package bel;
  * @author mdobrinski
  */
 public class BG_Skill {
-  private int rifle;
-  private int pistol;
-  private String lang;
-  private int langLevel;
-  private int drive;
-  private int swim;
-  private int hand;
-  private int lead;
-  private int demo;
-  private int orient;
-  private int aid;
-  private int bgSkillSN;
+  private int rifle;        // getRifle()
+  private int pistol;       // getPistol()
+  private String lang;      // String getLang()
+  private int langLevel;    // getLangLevel()
+  private int drive;        // getDrive()
+  private int swim;         // getSwim()
+  private int hand;         // getHand()
+  private int lead;         // getLead()
+  private int demo;         // getDemo()
+  private int orient;       // getOrient()
+  private int aid;          // getAid()
+  private int bgSkillSN;    // getSerialNumber()
+
+    @Override
+    public String toString() {
+        return "BG_Skill{" 
+                + "\r\nrifle=" + rifle 
+                + ", \r\npistol=" + pistol 
+                + ", \r\nlang=" + lang 
+                + ", \r\nlangLevel=" + langLevel 
+                + ", \r\ndrive=" + drive 
+                + ", \r\nswim=" + swim 
+                + ", \r\nhand=" + hand 
+                + ", \r\nlead=" + lead 
+                + ", \r\ndemo=" + demo 
+                + ", \r\norient=" + orient 
+                + ", \r\naid=" + aid 
+                + ", \r\nbgSkillSN=" + bgSkillSN + '}';
+    }
   
 
     public BG_Skill(String bgType, int solderSN) {
@@ -82,6 +99,10 @@ public class BG_Skill {
     
     public int getSerialNumber(){
         return bgSkillSN;
+    }
+    
+    public int getAid(){
+        return aid;
     }
 
     private void setRifle(String bgType) {

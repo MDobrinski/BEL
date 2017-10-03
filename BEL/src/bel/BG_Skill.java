@@ -23,22 +23,7 @@ public class BG_Skill {
   private int aid;          // getAid()
   private int bgSkillSN;    // getSerialNumber()
 
-    @Override
-    public String toString() {
-        return "BG_Skill{" 
-                + "\r\nrifle=" + rifle 
-                + ", \r\npistol=" + pistol 
-                + ", \r\nlang=" + lang 
-                + ", \r\nlangLevel=" + langLevel 
-                + ", \r\ndrive=" + drive 
-                + ", \r\nswim=" + swim 
-                + ", \r\nhand=" + hand 
-                + ", \r\nlead=" + lead 
-                + ", \r\ndemo=" + demo 
-                + ", \r\norient=" + orient 
-                + ", \r\naid=" + aid 
-                + ", \r\nbgSkillSN=" + bgSkillSN + '}';
-    }
+
   
 
     public BG_Skill(String bgType, int solderSN) {
@@ -318,6 +303,23 @@ public class BG_Skill {
         this.bgSkillSN = solderSN;
     }// End setBGskillSN
 
+        @Override
+    public String toString() {
+        return "BG_Skill{" 
+                + "\r\nrifle=" + rifle 
+                + ", \r\npistol=" + pistol 
+                + ", \r\nlang=" + lang 
+                + ", \r\nlangLevel=" + langLevel 
+                + ", \r\ndrive=" + drive 
+                + ", \r\nswim=" + swim 
+                + ", \r\nhand=" + hand 
+                + ", \r\nlead=" + lead 
+                + ", \r\ndemo=" + demo 
+                + ", \r\norient=" + orient 
+                + ", \r\naid=" + aid 
+                + ", \r\nbgSkillSN=" + bgSkillSN + '}';
+    }// End of toString
+    
     
     public static int D6(){
         int roll;

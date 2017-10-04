@@ -19,6 +19,9 @@ public class BEL_Char {
   private int weight;
   private double avgStat;
   private int serialNumber;
+  private int carry; //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
+  private int lift;  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
+  private int drag;  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
   private static int numSolders;
 
   public BEL_Char(int index) {
@@ -30,11 +33,19 @@ public class BEL_Char {
   setStamina();
   setWeight();
   setAvgStat();
+  setStrengthCLD();  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
   numSolders++;
   System.out.println(numSolders);
   setSerialNumber(index);
   }
 
+  private void setStrengthCLD(){  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
+      
+  }
+  
+  
+  
+  
   private void setSerialNumber(int index){
       this.serialNumber = index;
   }

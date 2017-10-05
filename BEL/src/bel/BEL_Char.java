@@ -19,9 +19,9 @@ public class BEL_Char {
   private int weight;
   private double avgStat;
   private int serialNumber;
-  private int carry; //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
-  private int lift;  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
-  private int drag;  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
+  private int carry; 
+  private int lift;  
+  private int drag;  
   private static int numSolders;
 
   public BEL_Char(int index) {
@@ -33,15 +33,51 @@ public class BEL_Char {
   setStamina();
   setWeight();
   setAvgStat();
-  setStrengthCLD();  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
+  setStrengthCLD();
   numSolders++;
   System.out.println(numSolders);
   setSerialNumber(index);
   }
 
-  private void setStrengthCLD(){  //<<<<<<<<<<<<<<<<<<<<<<<<< Add this
-      
-  }
+  private void setStrengthCLD(){
+   switch(this.strength){
+       case 5:
+           this.carry = DiceRoll(20, 30);
+           this.lift = DiceRoll(50, 75);
+           this.drag = DiceRoll(100, 125);
+           break;
+       case 6:
+           this.carry = DiceRoll(30, 40);
+           this.lift = DiceRoll(75, 100);
+           this.drag = DiceRoll(125, 150);
+           break;
+       case 7:
+           this.carry = DiceRoll(40, 50);
+           this.lift = DiceRoll(100, 125);
+           this.drag = DiceRoll(150, 175);
+           break;
+       case 8:
+           this.carry = DiceRoll(50, 60);
+           this.lift = DiceRoll(125, 150);
+           this.drag = DiceRoll(175, 200);
+           break;
+       case 9:
+           this.carry = DiceRoll(60, 70);
+           this.lift = DiceRoll(150, 175);
+           this.drag = DiceRoll(200, 225);
+           break;
+       case 10:
+           this.carry = DiceRoll(70, 80);
+           this.lift = DiceRoll(175, 200);
+           this.drag = DiceRoll(225, 250);
+           break;
+       case 11:
+           this.carry = DiceRoll(80, 90);
+           this.lift = DiceRoll(200, 225);
+           this.drag = DiceRoll(250, 275);
+           break;    
+   }// End of switch
+  }// End of setStrengthCLD()
   
   
   
@@ -131,6 +167,18 @@ public class BEL_Char {
   
   public double getAvgStat(){
       return this.avgStat;
+  }
+  
+  public int getCarry(){
+      return this.carry;
+  }
+  
+  public int getLift(){
+      return this.lift;
+  }
+  
+  public int getDrag(){
+      return this.drag;
   }
 
  private static int weightCalc(int strength, int agility) {
